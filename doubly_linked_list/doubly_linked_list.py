@@ -83,13 +83,13 @@ class DoublyLinkedList:
       self.tail = None
 
       # return the value
-      return head
+      return head.value
 
     # If the list has 2 or more items
     else:
 
       # get a reference to the head
-      value = self.head
+      value = self.head.value
 
       # set the head to be what was previously next to the head
       self.head = self.head.next
@@ -124,7 +124,35 @@ class DoublyLinkedList:
 
   # Removes the tail node and returns the value stored in it
   def remove_from_tail(self):
-    pass
+    # If the list is empty
+    if not self.tail:
+      return None
+
+    # If the list has one item
+    elif not self.tail.prev:
+
+      # get a reference to the tail
+      tail = self.tail
+
+      # delete the list's head reference
+      self.head = None
+      # delete the list's tail reference
+      self.tail = None
+
+      # return the value
+      return tail.value
+
+    # If the list has 2 or more items
+    else:
+      # get a reference to the tail
+      value = self.tail.value
+
+      # set the tail to be what was previously before the tail
+      self.tail = self.tail.prev
+
+      # return the value
+      return value
+
 
   # Takes a reference to a node in the list & moves it to the front
   # of the list, shifting all other nodes down
