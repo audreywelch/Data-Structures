@@ -153,18 +153,29 @@ class DoublyLinkedList:
       # return the value
       return value
 
-
   # Takes a reference to a node in the list & moves it to the front
   # of the list, shifting all other nodes down
   def move_to_front(self, node):
-    pass
+    
+    # If the list is empty, or has only one item, use the add_to_head() method
+    if not self.head or not self.head.next:
+      self.add_to_head(node)
+
+    # Loop through each node in the list, checking if the value of current node is what I'm looking for
+    current = self.head
+    while current:
+      if node == current.value:
+        self.add_to_head(node)
+      else:
+        # update the current to be whatever the next is
+        current = current.next
 
   # Takes a reference to a node in the list and moves it to the end of the list,
   # shifting all other nodes up
   def move_to_end(self, node):
     pass
 
-  # Takesa  reference to a node in the list and removes it from the list.
+  # Takes a reference to a node in the list and removes it from the list.
   # The deleted node's `previous` and `next` pointers should point to each afterwards.
   def delete(self, node):
     pass
