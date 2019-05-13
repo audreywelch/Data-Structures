@@ -45,7 +45,24 @@ class DoublyLinkedList:
 
   # Replaces the head of the list with the new value that is passed in
   def add_to_head(self, value):
-    pass
+    # Initialize a node with a value of the value passed in
+    new_node = ListNode(value, None, None)
+
+    # If the list is empty
+    if not self.head:
+      self.head = new_node
+      self.tail = new_node
+
+    # If the list has one item - the head does not have a next
+    elif not self.head.next:
+      new_node.next = self.head
+      self.head = new_node
+
+    # If the list has 2 or more items
+    else:
+      prev_head = self.head
+      self.head = new_node
+      self.head.next = prev_head
 
   # Removes the head node and returns the value stored in it
   def remove_from_head(self):
