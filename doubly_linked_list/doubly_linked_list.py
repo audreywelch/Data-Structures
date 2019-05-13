@@ -43,26 +43,37 @@ class DoublyLinkedList:
   def __len__(self):
     return self.length
 
+  # Replaces the head of the list with the new value that is passed in
   def add_to_head(self, value):
     pass
 
+  # Removes the head node and returns the value stored in it
   def remove_from_head(self):
     pass
 
+  # Replaces the tail of the list with a new value that is passed in
   def add_to_tail(self, value):
     pass
 
+  # Removes the tail node and returns the value stored in it
   def remove_from_tail(self):
     pass
 
+  # Takes a reference to a node in the list & moves it to the front
+  # of the list, shifting all other nodes down
   def move_to_front(self, node):
     pass
 
+  # Takes a reference to a node in the list and moves it to the end of the list,
+  # shifting all other nodes up
   def move_to_end(self, node):
     pass
 
+  # Takesa  reference to a node in the list and removes it from the list.
+  # The deleted node's `previous` and `next` pointers should point to each afterwards.
   def delete(self, node):
     pass
-    
+  
+  # Returns the maximum value in the list
   def get_max(self):
     pass
