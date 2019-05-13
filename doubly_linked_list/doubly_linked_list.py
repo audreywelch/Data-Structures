@@ -97,10 +97,30 @@ class DoublyLinkedList:
       # return the value
       return value
 
-
   # Replaces the tail of the list with a new value that is passed in
   def add_to_tail(self, value):
-    pass
+    # Initialize a node with a value of the value passed in
+    new_node = ListNode(value, None, None)
+
+    # If the list is empty
+    if self.tail is None:
+      self.head = new_node
+      self.tail = new_node
+
+    # If the list has one item
+    elif not self.tail.prev:
+
+      # set the current tail's next to the new node
+      self.tail.next = new_node
+
+      # set the list's tail as the new tail
+      self.tail = new_node
+
+    # If the list has 2 or more items
+    else:
+      prev_tail = self.tail
+      self.tail = new_node
+      self.tail.prev = prev_tail
 
   # Removes the tail node and returns the value stored in it
   def remove_from_tail(self):
