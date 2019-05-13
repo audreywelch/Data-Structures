@@ -190,7 +190,19 @@ class DoublyLinkedList:
   # Takes a reference to a node in the list and removes it from the list.
   # The deleted node's `previous` and `next` pointers should point to each afterwards.
   def delete(self, node):
-    pass
+    
+    # If the list is empty
+    if not self.head:
+      return
+
+    # If the list has one or more items
+    else:
+      current = self.head
+      while current:
+        if node == current.value:
+          self.delete(node)
+        else:
+          current = current.next
   
   # Returns the maximum value in the list
   def get_max(self):
