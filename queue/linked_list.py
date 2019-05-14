@@ -14,7 +14,7 @@ class Node:
         return self.next_node
 
     def set_next(self, new_next_node):
-        self.new_next_node = new_next_node
+        self.next_node = new_next_node
 
 # Make a new class for the linked list
 class LinkedList:
