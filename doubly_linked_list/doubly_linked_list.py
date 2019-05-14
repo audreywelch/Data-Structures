@@ -65,35 +65,37 @@ class DoublyLinkedList:
   # Removes the head node and returns the value stored in it
   def remove_from_head(self):
     # If the list is empty
-    if not self.head:
+    if not self.head and not self.tail: # self.length == 0
       return None
 
+    # Increment the length
+    self.length -= 1
+
     # If the list has one item
-    elif not self.head.next:
+    if self.head == self.tail: # not self.head.next:
       # get a reference to the head
-      head = self.head
+      current_head = self.head
 
-      # delete the list head's reference
+      # delete the list head's reference & the tail's reference
       self.head = None
-
-      # delete the tail's reference
       self.tail = None
 
       # return the value
-      return head.value
+      return current_head.value
 
     # If the list has 2 or more items
     else:
       # get a reference to the head
-      value = self.head.value
+      current_head = self.head
 
       # set the head to be what was previously next to the head
       self.head = self.head.next
 
-      # return the value
-      return value
+      # set what was previously before the head to none
+      self.head.prev = None
 
-    self.length -= 1
+      # return the value
+      return current_head.value
 
   # Replaces the tail of the list with a new value that is passed in
   def add_to_tail(self, value):
