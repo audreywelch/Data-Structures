@@ -100,20 +100,13 @@ class DoublyLinkedList:
   # Replaces the tail of the list with a new value that is passed in
   def add_to_tail(self, value):
     # Initialize a node with a value of the value passed in
-    new_node = ListNode(value, None, None)
+    new_node = ListNode(value)
+
+    self.length += 1
 
     # If the list is empty
-    if self.tail is None:
+    if not self.tail and not self.head:
       self.head = new_node
-      self.tail = new_node
-
-    # If the list has one item
-    elif not self.tail.prev:
-
-      # set the current tail's next to the new node
-      self.tail.next = new_node
-
-      # set the list's tail as the new tail
       self.tail = new_node
 
     # If the list has 2 or more items
@@ -125,14 +118,15 @@ class DoublyLinkedList:
   # Removes the tail node and returns the value stored in it
   def remove_from_tail(self):
     # If the list is empty
-    if not self.tail:
+    if not self.head and not self.tail:
       return None
 
-    # If the list has one item
-    elif not self.tail.prev:
+    self.length -= 1
 
+    # If the list has one item
+    if self.tail == self.tail:
       # get a reference to the tail
-      tail = self.tail
+      current_tail = self.tail
 
       # delete the list's head reference
       self.head = None
@@ -140,18 +134,21 @@ class DoublyLinkedList:
       self.tail = None
 
       # return the value
-      return tail.value
+      return current_tail.value
 
     # If the list has 2 or more items
     else:
       # get a reference to the tail
-      value = self.tail.value
+      current_tail = self.tail.value
 
       # set the tail to be what was previously before the tail
       self.tail = self.tail.prev
 
+      # set what was previously next to the tail to None
+      self.tail.next = None
+
       # return the value
-      return value
+      return current_tail.value
 
   # Takes a reference to a node in the list & moves it to the front
   # of the list, shifting all other nodes down
