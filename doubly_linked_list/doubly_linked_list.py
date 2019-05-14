@@ -179,13 +179,13 @@ class DoublyLinkedList:
       self.add_to_tail(node)
 
     # Loop through each node in the list, checking if the value of the current node is what I'm looking for
-    current = self.head
-    while current:
-      if node == current.value:
-        self.add_to_tail(node)
-      else:
-        # update the current to be whatever the next is
-        current = current.next
+    # current = self.head
+    # while current:
+    #   if node == current.value:
+    #     self.add_to_tail(node)
+    #   else:
+    #     # update the current to be whatever the next is
+    #     current = current.next
 
   # Takes a reference to a node in the list and removes it from the list.
   # The deleted node's `previous` and `next` pointers should point to each afterwards.
