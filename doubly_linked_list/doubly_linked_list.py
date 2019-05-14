@@ -46,23 +46,21 @@ class DoublyLinkedList:
   # Replaces the head of the list with the new value that is passed in
   def add_to_head(self, value):
     # Initialize a node with a value of the value passed in
-    new_node = ListNode(value, None, None)
+    new_node = ListNode(value)
 
     # If the list is empty
-    if not self.head:
+    if not self.head and not self.tail: # if self.length == 0
       self.head = new_node
       self.tail = new_node
-
-    # If the list has one item - the head does not have a next
-    elif not self.head.next:
-      new_node.next = self.head
-      self.head = new_node
 
     # If the list has 2 or more items
     else:
       prev_head = self.head
       self.head = new_node
       self.head.next = prev_head
+
+    # Increment our length
+    self.length += 1
 
   # Removes the head node and returns the value stored in it
   def remove_from_head(self):
@@ -72,7 +70,6 @@ class DoublyLinkedList:
 
     # If the list has one item
     elif not self.head.next:
-
       # get a reference to the head
       head = self.head
 
@@ -87,7 +84,6 @@ class DoublyLinkedList:
 
     # If the list has 2 or more items
     else:
-
       # get a reference to the head
       value = self.head.value
 
@@ -96,6 +92,8 @@ class DoublyLinkedList:
 
       # return the value
       return value
+
+    self.length -= 1
 
   # Replaces the tail of the list with a new value that is passed in
   def add_to_tail(self, value):
@@ -162,13 +160,13 @@ class DoublyLinkedList:
       self.add_to_head(node)
 
     # Loop through each node in the list, checking if the value of current node is what I'm looking for
-    current = self.head
-    while current:
-      if node == current.value:
-        self.add_to_head(node)
-      else:
-        # update the current to be whatever the next is
-        current = current.next
+    # current = self.head
+    # while current:
+    #   if node == current.value:
+    #     self.add_to_head(node)
+    #   else:
+    #     # update the current to be whatever the next is
+    #     current = current.next
 
   # Takes a reference to a node in the list and moves it to the end of the list,
   # shifting all other nodes up
