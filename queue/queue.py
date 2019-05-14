@@ -1,29 +1,52 @@
+from linked_list import LinkedList
+
 class Queue:
   def __init__(self):
+    # counter to keep track of the number of elements in our queue
     self.size = 0
+
     # what data structure should we
-    # use to store queue elements?
-    self.storage = []
+    # use to store queue elements? -> LinkedList implementation
+    self.storage = LinkedList()
+
+    # or
+    # self.storage = []
 
   def enqueue(self, item):
-    self.storage.append(item)
+    # add the item to the linked_list
+    self.storage.add_to_tail(item)
+
+    # increment our counter
+    self.size += 1
+
+    # or: self.storage.append(item)
   
   def dequeue(self):
-    # If the queue is empty
-    if not self.storage:
-      return None
 
-    removed_item = self.storage[0]
+    # Decrement our size counter
+    if self.size > 0:
+      self.size -= 1
 
-    self.storage.remove(self.storage[0])
+    # Remove the head of the linked list and return it
+    return self.storage.remove_head()
 
-    return removed_item
+    # # If the queue is empty
+    # if not self.storage:
+    #   return None
+
+    # removed_item = self.storage[0]
+
+    # self.storage.remove(self.storage[0])
+
+    # return removed_item
 
   def len(self):
 
-    length = 0
+    return self.size
 
-    for each_element in self.storage:
-      length += 1
+    # length = 0
 
-    return length
+    # for each_element in self.storage:
+    #   length += 1
+
+    # return length
