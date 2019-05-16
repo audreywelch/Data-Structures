@@ -9,11 +9,26 @@ class Heap:
     length = self.get_size()
 
     # Call bubble_up() to check if it's parent is larger and then swapping if so
-    self.bubble_up(length - 1)
+    self._bubble_up(length - 1)
 
   # Removes and returns the 'topmost' value from the heap, ensuring that the heap property is maintained after the topmost element has been removed
   def delete(self):
-    pass
+    # Save the value that was at the top in order to return it
+    top_value = self.storage[0]
+
+    # Remove the top value
+    self.storage.remove(top_value)
+
+    # Get the length of the array in order to use it to refer to the last element
+    length = self.get_size()
+
+    # Put the last element in the array at the top / Replace root with the last leaf
+    self.storage[0] = self.storage[length - 1]
+
+    # Call sift_down() to check if either of its children nodes are larger, and swapping if so
+    self._sift_down(0)
+
+    return top_value
 
   # Returns the maximum value in the heap in constant time
   def get_max(self):
@@ -30,7 +45,7 @@ class Heap:
     return length
 
   # Moves the element at the specified index "up" the heap by swapping it with its parent if the parent's value is less than the value at the specified index.
-  def bubble_up(self, index):
+  def _bubble_up(self, index):
     
     while index > 0:
       # get the parent element of this index
