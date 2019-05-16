@@ -158,7 +158,7 @@ class DoublyLinkedList:
     if node is self.head:
       return
 
-    value = node.value
+    node_value = node.value
 
     # If the node is currently the tail
     if node is self.tail:
@@ -168,12 +168,12 @@ class DoublyLinkedList:
       node.delete()
       self.length -= 1
     
-    self.add_to_head(value)
+    self.add_to_head(node_value)
 
   # Takes a reference to a node in the list and moves it to the end of the list,
   # shifting all other nodes up
   def move_to_end(self, node):
-    
+
     # If the node is already at the end
     if node is self.tail:
       return
