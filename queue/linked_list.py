@@ -1,6 +1,3 @@
-# from linked_list import LinkedList
-## could also import this from another file, but so that it is clear what I'm doing, I will put it all in this file
-
 class Node:
     def __init__(self, value = None, next_node = None):
         # the value at this linked list Node
@@ -120,36 +117,3 @@ class LinkedList:
             prev_head = self.head
             self.head = new_node
             self.head.set_next(prev_head)
-
-class Queue:
-  def __init__(self):
-    # counter to keep track of the number of elements in our queue
-    self.size = 0
-
-    # what data structure should we
-    # use to store queue elements? -> LinkedList implementation
-    self.storage = LinkedList()
-
-
-  def enqueue(self, item):
-    # add the item to the linked_list
-    self.storage.add_to_tail(item)
-
-    # increment our counter
-    self.size += 1
-
-  
-  def dequeue(self):
-
-    # Decrement our size counter
-    if self.size > 0:
-      self.size -= 1
-
-    # Remove the head of the linked list and return it
-    return self.storage.remove_head()
-
-
-  def len(self):
-
-    return self.size
-
